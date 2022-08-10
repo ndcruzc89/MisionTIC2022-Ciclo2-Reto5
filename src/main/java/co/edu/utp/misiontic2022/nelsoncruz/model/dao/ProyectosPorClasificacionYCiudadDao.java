@@ -12,9 +12,7 @@ import co.edu.utp.misiontic2022.nelsoncruz.util.JDBCUtilities;
 
 public class ProyectosPorClasificacionYCiudadDao {
 
-    public List<ProyectosPorClasificacionYCiudadVo> listar(String clasificacion,
-            String ciudad1, String ciudad2,
-            String ciudad3) throws SQLException {
+    public List<ProyectosPorClasificacionYCiudadVo> listar() throws SQLException {
         List<ProyectosPorClasificacionYCiudadVo> respuesta = new ArrayList<>();
         Connection conn = null;
         PreparedStatement stmt = null;
@@ -23,14 +21,9 @@ public class ProyectosPorClasificacionYCiudadDao {
             conn = JDBCUtilities.getConnection();
             var sql = "SELECT ID_Proyecto, Constructora, Numero_Habitaciones, Ciudad"
                     + " FROM Proyecto"
-                    + " WHERE Clasificacion = ?"
-                    + " AND Ciudad IN (?, ?, ?);";
+                    + " WHERE Clasificacion = 'Casa Campestre'"
+                    + " AND Ciudad IN ('Santa Marta', 'Cartagena', 'Barranquilla');";
             stmt = conn.prepareStatement(sql);
-            stmt.setString(1, clasificacion);
-            stmt.setString(2, ciudad1);
-            stmt.setString(3, ciudad2);
-            stmt.setString(4, ciudad3);
-
             rset = stmt.executeQuery();
             while (rset.next()) {
                 var vo = new ProyectosPorClasificacionYCiudadVo();

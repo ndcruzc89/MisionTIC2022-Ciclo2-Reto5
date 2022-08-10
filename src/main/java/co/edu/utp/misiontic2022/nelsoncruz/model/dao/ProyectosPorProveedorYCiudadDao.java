@@ -19,21 +19,18 @@ public class ProyectosPorProveedorYCiudadDao {
         ResultSet rset = null;
         try {
             conn = JDBCUtilities.getConnection();
-            var sql = "SELECT L.NOMBRE ||' '||L.PRIMER_APELLIDO ||' '||L.SEGUNDO_APELLIDO AS LIDER,"
-                    + "       SUM(C.CANTIDAD * MC.PRECIO_UNIDAD) AS VALOR"
-                    + " FROM LIDER L"
-                    + " JOIN PROYECTO P ON (P.ID_LIDER = L.ID_LIDER)"
-                    + " JOIN COMPRA C ON (P.ID_PROYECTO = C.ID_PROYECTO)"
-                    + " JOIN MATERIALCONSTRUCCION MC ON (C.ID_MATERIALCONSTRUCCION = MC.ID_MATERIALCONSTRUCCION)"
-                    + " GROUP BY LIDER"
-                    + " ORDER BY VALOR DESC"
-                    + " LIMIT 10;";
+            var sql = "SELECT c.ID_Compra, p.Constructora, p.Banco_Vinculado"
+                    + " FROM Compra c"
+                    + " JOIN Proyecto p ON (c.ID_Proyecto = p.ID_Proyecto)"
+                    + " WHERE c.Proveedor = 'Homecenter'"
+                    + " AND p.Ciudad = 'Salento';";
             stmt = conn.prepareStatement(sql);
             rset = stmt.executeQuery();
             while (rset.next()) {
                 var vo = new ProyectosPorProveedorYCiudadVo();
-                vo.setLider(rset.getString("lider"));
-                vo.setValor(rset.getDouble("valor"));
+                vo.setId(rset.getInt("ID_Compra"));
+                vo.setConstructora(rset.getString("Constructora"));
+                vo.setBancoVinculado(rset.getString("Banco_Vinculado"));
 
                 respuesta.add(vo);
             }

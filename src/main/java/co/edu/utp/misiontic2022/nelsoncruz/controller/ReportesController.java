@@ -5,17 +5,21 @@ import java.util.List;
 
 import co.edu.utp.misiontic2022.nelsoncruz.model.dao.LideresDao;
 import co.edu.utp.misiontic2022.nelsoncruz.model.dao.ProyectosPorClasificacionYCiudadDao;
+import co.edu.utp.misiontic2022.nelsoncruz.model.dao.ProyectosPorProveedorYCiudadDao;
 import co.edu.utp.misiontic2022.nelsoncruz.model.vo.LideresVo;
 import co.edu.utp.misiontic2022.nelsoncruz.model.vo.ProyectosPorClasificacionYCiudadVo;
+import co.edu.utp.misiontic2022.nelsoncruz.model.vo.ProyectosPorProveedorYCiudadVo;
 
 public class ReportesController {
 
     private LideresDao lideresDao;
     private ProyectosPorClasificacionYCiudadDao proyectosPorClasificacionYCiudadDao;
+    private ProyectosPorProveedorYCiudadDao proyectosPorProveedorYCiudadDao;
 
     public ReportesController() {
         lideresDao = new LideresDao();
         proyectosPorClasificacionYCiudadDao = new ProyectosPorClasificacionYCiudadDao();
+        proyectosPorProveedorYCiudadDao = new ProyectosPorProveedorYCiudadDao();
 
     }
 
@@ -24,18 +28,12 @@ public class ReportesController {
 
     }
 
-    public List<ProyectosPorClasificacionYCiudadVo> listarProyectosPorClasificacionYCiudad(String clasificacion, String ciudad1, String ciudad2, String ciudad3) throws SQLException {
-        return proyectosPorClasificacionYCiudadDao.listar(clasificacion, ciudad1,ciudad2, ciudad3);
+    public List<ProyectosPorClasificacionYCiudadVo> listarProyectosPorClasificacionYCiudad() throws SQLException {
+        return proyectosPorClasificacionYCiudadDao.listar();
     }
 
+    public List<ProyectosPorProveedorYCiudadVo> listarProyectosPorProveedorYCiudad() throws SQLException {
+        return proyectosPorProveedorYCiudadDao.listar();
+    }
 
-    // public List<DeudasPorProyectoVo> listarTotalAdeudadoPorProyectos(Double
-    // limiteInferior) throws SQLException {
-    // return deudasPorProyectoDao.listar(limiteInferior);
-    // }
-
-    // public List<ComprasDeLiderVo> listarlideresQueMasGastan() throws SQLException
-    // {
-    // return comprasDeLiderDao.listar();
-    // }
 }

@@ -6,6 +6,7 @@ import co.edu.utp.misiontic2022.nelsoncruz.controller.ReportesController;
 
 import co.edu.utp.misiontic2022.nelsoncruz.model.vo.LideresVo;
 import co.edu.utp.misiontic2022.nelsoncruz.model.vo.ProyectosPorClasificacionYCiudadVo;
+import co.edu.utp.misiontic2022.nelsoncruz.model.vo.ProyectosPorProveedorYCiudadVo;
 
 public class ReportesView {
 
@@ -23,26 +24,6 @@ public class ReportesView {
         return respuesta;
     }
 
-    // public void proyectosFinanciadosPorBanco(String banco) {
-    // System.out.println(repitaCaracter('=', 36) + " LISTADO DE PROYECTOS POR BANCO
-    // "
-    // + repitaCaracter('=', 37));
-    // if (banco != null && !banco.isBlank()) {
-    // System.out.println(String.format("%3s %-25s %-20s %-15s %-7s %-30s",
-    // "ID", "CONSTRUCTORA", "CIUDAD", "CLASIFICACION", "ESTRATO", "LIDER"));
-    // System.out.println(repitaCaracter('-', 105));
-    // // TODO Imprimir en pantalla la información del proyecto
-    // try {
-    // List<ProyectoBancoVo> proyectosBanco =
-    // controlador.listarProyectosFinanciadosPorBanco(banco);
-    // proyectosBanco.forEach(System.out::println);
-    // } catch (Exception ex) {
-    // System.err.println("Error: " + ex);
-    // ex.printStackTrace();
-    // }
-    // }
-    // }
-
     public void primerInforme() {
         System.out.println(repitaCaracter('=', 36) + "PRIMER INFORME"
                 + repitaCaracter('=', 37));
@@ -59,7 +40,7 @@ public class ReportesView {
         }
     }
 
-    public void segundoInforme(String clasificacion, String ciudad1, String ciudad2, String ciudad3) {
+    public void segundoInforme() {
         System.out.println(repitaCaracter('=', 36) + ""
                 + repitaCaracter('=', 37));
         System.out.println(String.format("%-13s %-23s %-21s %-15s",
@@ -68,7 +49,7 @@ public class ReportesView {
         // TODO Imprimir en pantalla la información del proyecto
         try {
             List<ProyectosPorClasificacionYCiudadVo> proyectos = controlador
-                    .listarProyectosPorClasificacionYCiudad(clasificacion, ciudad1, ciudad2, ciudad3);
+                    .listarProyectosPorClasificacionYCiudad();
             proyectos.forEach(System.out::println);
         } catch (Exception ex) {
             System.err.println("Error: " + ex);
@@ -76,40 +57,21 @@ public class ReportesView {
         }
     }
 
-    // public void totalAdeudadoPorProyectosSuperioresALimite(Double limiteInferior)
-    // {
-    // System.out.println(repitaCaracter('=', 1) + " TOTAL DEUDAS POR PROYECTO "
-    // + repitaCaracter('=', 1));
-    // if (limiteInferior != null) {
-    // System.out.println(String.format("%3s %14s", "ID", "VALOR "));
-    // System.out.println(repitaCaracter('-', 29));
-    // // TODO Imprimir en pantalla la información del total adeudado
-    // try {
-    // List<DeudasPorProyectoVo> deudasProyecto =
-    // controlador.listarTotalAdeudadoPorProyectos(limiteInferior);
-    // deudasProyecto.forEach(System.out::println);
-    // } catch (Exception ex) {
-    // System.err.println("Error: " + ex);
-    // ex.printStackTrace();
-    // }
-    // }
-    // }
 
-    // String.format("%3d %,15.1f", id, valor);
-
-    // public void lideresQueMasGastan() {
-    // System.out.println(repitaCaracter('=', 6) + " 10 LIDERES MAS COMPRADORES "
-    // + repitaCaracter('=', 7));
-    // System.out.println(String.format("%-25s %14s", "LIDER", "VALOR "));
-    // System.out.println(repitaCaracter('-', 41));
-    // // TODO Imprimir en pantalla la información de los líderes
-    // try {
-    // List<ComprasDeLiderVo> comprasLider =
-    // controlador.listarlideresQueMasGastan();
-    // comprasLider.forEach(System.out::println);
-    // } catch (Exception ex) {
-    // System.err.println("Error: " + ex);
-    // ex.printStackTrace();
-    // }
-    // }
+    public void tercerInforme() {
+        System.out.println(repitaCaracter('=', 36) + ""
+                + repitaCaracter('=', 37));
+        System.out.println(String.format("%-11s %-23s %-21s",
+                "ID_COMPRA", "CONSTRUCTORA", "BANCO_VINCULADO"));
+        System.out.println(repitaCaracter('-', 105));
+        // TODO Imprimir en pantalla la información del proyecto
+        try {
+            List<ProyectosPorProveedorYCiudadVo> proyectos = controlador
+                    .listarProyectosPorProveedorYCiudad();
+            proyectos.forEach(System.out::println);
+        } catch (Exception ex) {
+            System.err.println("Error: " + ex);
+            ex.printStackTrace();
+        }
+    }
 }

@@ -2,27 +2,37 @@ package co.edu.utp.misiontic2022.nelsoncruz.model.vo;
 
 public class ProyectosPorProveedorYCiudadVo {
 
-    private String lider;
-    private Double valor;
+    private Integer id;
+    private String constructora;
+    private String bancoVinculado;
 
-    public String getLider() {
-        return lider;
+    public Integer getId() {
+        return id;
     }
 
-    public void setLider(String lider) {
-        this.lider = lider;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public Double getValor() {
-        return valor;
+    public String getConstructora() {
+        return constructora;
     }
 
-    public void setValor(Double valor) {
-        this.valor = valor;
+    public void setConstructora(String constructora) {
+        this.constructora = constructora;
+    }
+
+    public String getBancoVinculado() {
+        return bancoVinculado;
+    }
+
+    public void setBancoVinculado(String bancoVinculado) {
+        this.bancoVinculado = bancoVinculado;
     }
 
     @Override
     public String toString() {
-        return String.format("%-25s %,15.1f", lider, valor);
+        return String.format("%-11s %-23s %-21s", id, constructora, bancoVinculado);
     }
+
 }
