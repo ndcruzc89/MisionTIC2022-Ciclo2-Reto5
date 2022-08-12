@@ -28,7 +28,7 @@ public class ReportesView {
         System.out.println(repitaCaracter('=', 36) + "PRIMER INFORME"
                 + repitaCaracter('=', 37));
         System.out.println(String.format("%-9s %-10s %-17s %-20s",
-                "ID_LIDER", "NOMBRE", "PRIMER_APELLIDO", "CIUDAD_DE_RESIDENCIA"));
+                "ID LIDER", "NOMBRE", "PRIMER APELLIDO", "CIUDAD RESIDENCIA"));
         System.out.println(repitaCaracter('-', 105));
         // TODO Imprimir en pantalla la información del proyecto
         try {
@@ -44,7 +44,7 @@ public class ReportesView {
         System.out.println(repitaCaracter('=', 36) + ""
                 + repitaCaracter('=', 37));
         System.out.println(String.format("%-13s %-23s %-21s %-15s",
-                "ID_PROYECTO", "CONSTRUCTORA", "NUMERO_HABITACIONES", "CIUDAD"));
+                "ID PROYECTO", "CONSTRUCTORA", "HABITACIONES", "CIUDAD"));
         System.out.println(repitaCaracter('-', 105));
         // TODO Imprimir en pantalla la información del proyecto
         try {
